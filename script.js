@@ -12,9 +12,8 @@ var generateBtn = document.querySelector("#generate");
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
-  
 
-  password = passwordText.value;
+ passwordText.textContent = password;
 
 };
 
@@ -29,8 +28,10 @@ function generatePassword() {
     var uppercaseCharChoice = confirm ('Would you like to add uppercase characters to your password?');
     var numberChoice = confirm ('Would you like to add numbers to your password?');
     var specialCharChoice = confirm ('Would you like to add special characters to your password?');
+    var numOfSelectedChoices = 0;
 
     if (lowercaseCharChoice) { 
+      numOfSelectedChoices++
       for(i=0;i<length;i++){
         var randomLowerCase = getRandomChar(lowercaseChar);
         passwordText += randomLowerCase;
@@ -39,6 +40,7 @@ function generatePassword() {
     }
 
     if (uppercaseCharChoice) { 
+      numOfSelectedChoices++
       for(i=0;i<length;i++){
         var randomUpperCase = getRandomChar(uppercaseChar);
         passwordText += randomUpperCase;
@@ -46,6 +48,7 @@ function generatePassword() {
       console.log(passwordText)
     }
     if (numberChoice) { 
+      numOfSelectedChoices++
       for(i=0;i<length;i++){
         var randomNumber = getRandomChar(number);
         passwordText += randomNumber;
@@ -53,19 +56,23 @@ function generatePassword() {
       console.log(passwordText)
     }
     if (specialCharChoice) { 
+      numOfSelectedChoices++
       for(i=0;i<length;i++){
         var randomSpecialChar = getRandomChar(specialChar);
         passwordText += randomSpecialChar;
       }
       console.log(passwordText)
     }
+    passwordTextLength = passwordText.length / numOfSelectedChoices;
+    console.log(passwordTextLength);
   }
   else {
     alert('The length of the password must be between 8 and 128 characters.')
   }
+  return passwordText;
 };
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+generateBtn.addEventListener("click", writePassword)
 console.log(passwordText);
 console.log(password)
