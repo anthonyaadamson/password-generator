@@ -36,7 +36,6 @@ function generatePassword() {
         var randomLowerCase = getRandomChar(lowercaseChar);
         passwordText += randomLowerCase;
       }
-      console.log(passwordText)
     }
 
     if (uppercaseCharChoice) { 
@@ -53,7 +52,6 @@ function generatePassword() {
         var randomNumber = getRandomChar(number);
         passwordText += randomNumber;
       }
-      console.log(passwordText)
     }
     if (specialCharChoice) { 
       numOfSelectedChoices++
@@ -61,10 +59,13 @@ function generatePassword() {
         var randomSpecialChar = getRandomChar(specialChar);
         passwordText += randomSpecialChar;
       }
-      console.log(passwordText)
     }
+
+    //Finds the length of the given password based on the length you selected and the number of choices
+    // Can't seem to figure out how to make the string the correct length after choosing the options.
     passwordTextLength = passwordText.length / numOfSelectedChoices;
-    console.log(passwordTextLength);
+
+
   }
   else {
     alert('The length of the password must be between 8 and 128 characters.')
